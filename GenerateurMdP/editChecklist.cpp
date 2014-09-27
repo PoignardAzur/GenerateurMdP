@@ -2,10 +2,10 @@
 #include <fstream>
 #include <string>
 
-#define NOM_DU_FICHIER_A_RESET_1 "A faire chaque jour.txt"
-#define NOM_DU_FICHIER_A_COPIER_1 "Fichiers\\Modele1.txt"
-#define NOM_DU_FICHIER_A_RESET_2 "A faire chaque semaine.txt"
-#define NOM_DU_FICHIER_A_COPIER_2 "Fichiers\\Modele2.txt"
+#define NOM_DU_FICHIER_A_RESET_1 "..\\A faire chaque jour.txt"
+#define NOM_DU_FICHIER_A_COPIER_1 "FichiersGenerateur\\Modele1.txt"
+#define NOM_DU_FICHIER_A_RESET_2 "..\\A faire chaque semaine.txt"
+#define NOM_DU_FICHIER_A_COPIER_2 "FichiersGenerateur\\Modele2.txt"
 
 
 std::string getAllLinesOf(const std::string& fileName)
@@ -31,4 +31,5 @@ void resetLists()
     f1 << getAllLinesOf(NOM_DU_FICHIER_A_COPIER_1);
     f2 << getAllLinesOf(NOM_DU_FICHIER_A_COPIER_2);
 }
+
 
