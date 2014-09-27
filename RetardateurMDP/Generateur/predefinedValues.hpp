@@ -1,0 +1,32 @@
+#ifndef PREDEFINEDVALUES_HPP
+#define PREDEFINEDVALUES_HPP
+
+
+    #define MINUTES_TO_WAIT_BY_DEFAULT      120
+    #define MINUTES_TO_WAIT_MONDAY          MINUTES_TO_WAIT_BY_DEFAULT
+    #define MINUTES_TO_WAIT_TUESDAY         MINUTES_TO_WAIT_BY_DEFAULT
+    #define MINUTES_TO_WAIT_WEDNESDAY       MINUTES_TO_WAIT_BY_DEFAULT
+    #define MINUTES_TO_WAIT_THURSDAY        MINUTES_TO_WAIT_BY_DEFAULT
+    #define MINUTES_TO_WAIT_FRIDAY          MINUTES_TO_WAIT_BY_DEFAULT
+    #define MINUTES_TO_WAIT_SATURDAY        MINUTES_TO_WAIT_BY_DEFAULT
+    #define MINUTES_TO_WAIT_SUNDAY          0
+
+    #define SHORT_DELAYS 0
+
+    #if SHORT_DELAYS == 2
+        #define MINUTE_DURATION 60
+    #elif SHORT_DELAYS == 1
+        #define MINUTE_DURATION 3000
+    #else
+        #define MINUTE_DURATION (60*1000)
+    #endif
+
+    #define DEFAULT_PASSWORD_BUTTON_TEXT "Donner mot de passe"
+    #define PRESSED_PASSWORD_BUTTON_TEXT "Annuler mot de passe"
+    #define DEFAULT_WAITING_TEXT_1 "Temps restant : "
+    #define DEFAULT_WAITING_TEXT_2 " minute"
+    #define DEFAULT_WAITING_TEXT_3 " minutes"
+
+
+
+#endif // PREDEFINEDVALUES_HPP
