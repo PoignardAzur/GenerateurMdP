@@ -14,6 +14,7 @@ int main()
 
 	std::cout << "Taper \"DonnerMot\" pour recuperer le mot de passe a la fin du timer,"
 	<< endl << "Taper \"ResetMot\" pour enregistrer un nouveau mot de passe aleatoire,"
+	<< endl << "Taper \"ResetListe\" pour remettre la liste a zero,"
 	<< endl << "Taper \"Quitter\" pour finir." << endl << endl << endl;
 
 	while( appelerFonction(fichier, fichier2) );

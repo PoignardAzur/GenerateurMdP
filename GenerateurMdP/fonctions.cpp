@@ -26,6 +26,9 @@ bool appelerFonction(std::string& fichier1, std::string& fichier2)
 	if (chaine == "RESETMOT")
 	creerNouveauMotDePasse(fichier1, fichier2);
 
+	if (chaine == "RESETLISTE")
+	resetLists();
+
 	if (chaine == "QUITTER")
 	return false;
 

@@ -1,7 +1,7 @@
 
 #include "includes.h"
 
-#define ADRESSE "Fichier.mdp"
+#define ADRESSE "Fichiers\\Fichier.mdp"
 #define TAILLE 12
 
 #define DUREE_SECONDE 1
@@ -9,6 +9,8 @@
 #define TEMPS 30 * DUREE_MINUTE
 
 
+void resetLists();
+std::string getAllLinesOf(const std::string& fileName);
 
 bool appelerFonction(std::string& fichier1, std::string& fichier2);
 bool donnerMotDePasse(std::string& fichier1, std::string& fichier2);
