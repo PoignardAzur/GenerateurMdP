@@ -1,0 +1,7 @@
+**/bin/**
+**/obj/**
+*.depend
+*.layout
+*.pro.user
+**/build**
+v_*
