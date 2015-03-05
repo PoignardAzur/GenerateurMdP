@@ -1,3 +1,4 @@
+
 #ifndef GENERATEURMDP_H
 #define GENERATEURMDP_H
 
@@ -9,37 +10,41 @@
 #include "predefinedValues.hpp"
 
 
-namespace Ui {
-class GenerateurMdP;
+namespace Ui
+{
+    class GenerateurMdP;
 }
 
 class GenerateurMdP : public QMainWindow
 {
     Q_OBJECT
 
-	public:
-		explicit GenerateurMdP(QWidget *parent = 0);
-		~GenerateurMdP();
+    public:
 
-        long long minutesToWaitAtStart();
-        void cancelGettingPassword();
+    explicit GenerateurMdP(QWidget *parent = 0);
+    ~GenerateurMdP();
 
-private slots:
-        void on_getPasswordButton_pressed();
-        void givingPassword();
+    int timeToWaitAtStart();
+    void cancelGettingPassword();
 
-        void on_resetPasswordButton_pressed();
-        void on_copyToClipboardButton_pressed();
 
-private:
+    private slots:
 
-        Ui::GenerateurMdP *ui;
-        int m_minutesToWait;
-        bool m_waitingButtonPressed;
-        QTimer *m_timerByMinute;
-        QTimer *m_globalTimer;
+    void on_getPasswordButton_pressed();
+    void givingPassword();
+
+    void on_resetPasswordButton_pressed();
+    void on_copyToClipboardButton_pressed();
+
+
+    private:
+
+    Ui::GenerateurMdP *ui;
+    int m_minutesToWait;
+    bool m_waitingButtonPressed;
+    QTimer *m_timerByMinute;
+    QTimer *m_globalTimer;
 };
 
 
 #endif // GENERATEURMDP_H
-

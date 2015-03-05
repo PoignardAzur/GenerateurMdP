@@ -1,0 +1,7 @@
+Le Générateur-Retardateur de mots de passe[tm] est un logiciel anti-procrastination destiné principalement à conserver les mots de passes donnant accès aux outils de divertissement auquel l'utilisateur désire ne pas avoir un accès immédiat. Il permet de diminuer la tentation due à l'accès facile et sans attente à ces divertissements, en y associant un délai paramétrable par l'utilisateur selon le mot de passe. Son utilisation secondaire est de générer des mots de passe aléatoire.
+
+Le GRMDP[tm] n'est pas conçu pour conserver les mots de passe en toute sécurité ou pour générer des mots de passe aléatoires optimaux, cependant ces fonctions doivent tout de même être raisonnablements prises en compte dans la conception du logiciel.
+
+Le GRMP doit permettre de stocker un mot de passe unique dans un fichier, en insérant dans le fichier des informations incluant le mot de passe et les conditions de récupération, avec un cryptage dont la clé est basée sur un mot de passe maître.
+
+Le GRMP doit aussi permettre d'ouvrir n'importe quel fichier et de l'analyser pour tester la présence d'un mot de passe, et le cas échéant, d'exécuter les conditions de récupération du mot de passe (impossible, immédiate, après timer, etc).

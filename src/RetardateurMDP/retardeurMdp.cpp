@@ -1,13 +1,13 @@
-#include "editPasswordFile.hpp"
-#include "ui_generateurmdp.h"
+
 #include <QInputDialog>
 #include <QDate>
 #include <QClipboard>
 
+#include "editPasswordFile.hpp"
+#include "ui_generateurmdp.h"
 
-GenerateurMdP::GenerateurMdP(QWidget *parent) :
-QMainWindow(parent),
-ui(new Ui::GenerateurMdP)
+
+GenerateurMdP::GenerateurMdP(QWidget *parent) : QMainWindow(parent), ui(new Ui::GenerateurMdP)
 {
     ui->setupUi(this);
     m_timerByMinute = new QTimer;
@@ -17,34 +17,6 @@ ui(new Ui::GenerateurMdP)
     QWidget::setWindowTitle("Retardateur de mot de passe 3000");
 }
 
-
-long long GenerateurMdP::minutesToWaitAtStart()
-{
-    if (QDate::currentDate().dayOfWeek() == 1) //monday
-    return MINUTES_TO_WAIT_MONDAY;
-
-    if (QDate::currentDate().dayOfWeek() == 2) //tuesday
-    return MINUTES_TO_WAIT_TUESDAY;
-
-    if (QDate::currentDate().dayOfWeek() == 3) //wednesday
-    return MINUTES_TO_WAIT_WEDNESDAY;
-
-    if (QDate::currentDate().dayOfWeek() == 4) //thursday
-    return MINUTES_TO_WAIT_THURSDAY;
-
-    if (QDate::currentDate().dayOfWeek() == 5) //friday
-    return MINUTES_TO_WAIT_FRIDAY;
-
-    if (QDate::currentDate().dayOfWeek() == 6) //saturday
-    return MINUTES_TO_WAIT_SATURDAY;
-
-    if (QDate::currentDate().dayOfWeek() == 7) //sunday
-    return MINUTES_TO_WAIT_SUNDAY;
-
-    return MINUTES_TO_WAIT_BY_DEFAULT; // the day the world ended
-}
-
-
 GenerateurMdP::~GenerateurMdP()
 {
     delete ui;
@@ -52,7 +24,32 @@ GenerateurMdP::~GenerateurMdP()
 }
 
 
+int GenerateurMdP::timeToWaitAtStart()
+{
+    if (QDate::currentDate().dayOfWeek() == 1) //monday
+    return MONDAY_WAIT_TIME;
 
+    if (QDate::currentDate().dayOfWeek() == 2) //tuesday
+    return TUESDAY_WAIT_TIME;
+
+    if (QDate::currentDate().dayOfWeek() == 3) //wednesday
+    return WEDNESDAY_WAIT_TIME;
+
+    if (QDate::currentDate().dayOfWeek() == 4) //thursday
+    return THURSDAY_WAIT_TIME;
+
+    if (QDate::currentDate().dayOfWeek() == 5) //friday
+    return FRIDAY_WAIT_TIME;
+
+    if (QDate::currentDate().dayOfWeek() == 6) //saturday
+    return SATURDAY_WAIT_TIME;
+
+    if (QDate::currentDate().dayOfWeek() == 7) //sunday
+    return SUNDAY_WAIT_TIME;
+
+    // not gonna happen
+    return DEFAULT_WAIT_TIME; // the day the world ended
+}
 
 void GenerateurMdP::givingPassword()
 {
@@ -89,7 +86,6 @@ void GenerateurMdP::on_copyToClipboardButton_pressed()
     QApplication::clipboard()->setText(ui->mainLine->text());
 }
 
-
 void GenerateurMdP::on_getPasswordButton_pressed()
 {
     if(!m_waitingButtonPressed)
@@ -97,7 +93,7 @@ void GenerateurMdP::on_getPasswordButton_pressed()
         m_waitingButtonPressed = true;
         ui->getPasswordButton->setText(PRESSED_PASSWORD_BUTTON_TEXT);
 
-        m_globalTimer->start(minutesToWaitAtStart() * MINUTE_DURATION);
+        m_globalTimer->start(timeToWaitAtStart());
         givingPassword();
     }
 
@@ -105,6 +101,16 @@ void GenerateurMdP::on_getPasswordButton_pressed()
     {
         cancelGettingPassword();
     }
+}
+
+void GenerateurMdP::on_resetPasswordButton_pressed()
+{
+    ui->getPasswordButton->setEnabled(true);
+    cancelGettingPassword();
+    QString str = QInputDialog::getText(this, "Nouveau mot de passe", "Entrez votre nouveau mot de passe :");
+
+    if (str != "")
+    createNewPassword(str.toStdString());
 }
 
 void GenerateurMdP::cancelGettingPassword()
@@ -117,22 +123,5 @@ void GenerateurMdP::cancelGettingPassword()
     m_minutesToWait = 1;
     m_timerByMinute->stop();
 }
-
-
-void GenerateurMdP::on_resetPasswordButton_pressed()
-{
-    ui->getPasswordButton->setEnabled(true);
-    cancelGettingPassword();
-    QString str = QInputDialog::getText(this, "Nouveau mot de passe", "Entrez votre nouveau mot de passe :");
-
-    if (str != "")
-    createNewPassword(str.toStdString());
-}
-
-
-
-
-
-
 
 

@@ -1,11 +1,8 @@
 
-
 #include "editPasswordFile.hpp"
 #include <fstream>
 #include <ctime>
 
-
-//#define FILE_NAME "Fichiers\\FichierRetardeur\\Fichier.mdp"
 #define FILE_NAME "FichierRetardeur\\Fichier.mdp"
 #define STR_SIZE 12
 
