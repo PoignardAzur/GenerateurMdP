@@ -93,6 +93,19 @@ void PasswordDelayer_Filebox::on_path_lineEdit_textChanged(const QString &str)
     updateButtons(str);
 }
 
+void PasswordDelayer_Filebox::on_path_lineEdit_returnPressed()
+{
+    if (isThereFile(getWrittenFilePath()))
+    {
+        openPasswordFile(getWrittenFilePath());
+    }
+
+    else if (!getWrittenFilePath().isEmpty())
+    {
+        createPasswordFile(getWrittenFilePath());
+    }
+}
+
 void PasswordDelayer_Filebox::on_path_button_clicked()
 {
     QString path = QFileDialog::getOpenFileName(this, "Ouvrir fichier de Mot de Passe", getWrittenFilePath(), "*.mdp");

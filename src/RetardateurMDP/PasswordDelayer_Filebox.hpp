@@ -37,6 +37,7 @@ class PasswordDelayer_Filebox : public QWidget
     private slots:
 
     void on_path_lineEdit_textChanged(const QString &str);
+    void on_path_lineEdit_returnPressed();
     void on_path_button_clicked();
 
     void on_openFile_button_clicked();

@@ -32,29 +32,39 @@ void PasswordRuleWidget::deleteThis(bool getInfo)
         {
             case 0:
                 r.monday = true;
+                r.tuesday = true;
+                r.wednesday = true;
+                r.thursday = true;
+                r.fryday = true;
+                r.saturday = true;
+                r.sunday = true;
             break;
 
             case 1:
-                r.tuesday = true;
+                r.monday = true;
             break;
 
             case 2:
-                r.wednesday = true;
+                r.tuesday = true;
             break;
 
             case 3:
-                r.thursday = true;
+                r.wednesday = true;
             break;
 
             case 4:
-                r.fryday = true;
+                r.thursday = true;
             break;
 
             case 5:
-                r.saturday = true;
+                r.fryday = true;
             break;
 
             case 6:
+                r.saturday = true;
+            break;
+
+            case 7:
                 r.sunday = true;
             break;
         }
