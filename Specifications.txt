@@ -5,3 +5,69 @@ Le GRMDP[tm] n'est pas conçu pour conserver les mots de passe en toute sécurité 
 Le GRMP doit permettre de stocker un mot de passe unique dans un fichier, en insérant dans le fichier des informations incluant le mot de passe et les conditions de récupération, avec un cryptage dont la clé est basée sur un mot de passe maître.
 
 Le GRMP doit aussi permettre d'ouvrir n'importe quel fichier et de l'analyser pour tester la présence d'un mot de passe, et le cas échéant, d'exécuter les conditions de récupération du mot de passe (impossible, immédiate, après timer, etc).
+
+
+Besoins précis : 
+
+La fenêtre principale doit avoir six lignes, dans cet ordre :
+- Ligne d'adresse
+ -> Pour choisir le fichier à ouvrir
+ -> Inclut une barre d'adresse
+ -> Inclut un bouton type "Parcourir"
+- Ligne de boutons [Mode ouvrir fichier] :
+ -> Ouvrir fichier
+ -> Créer fichier
+- Ligne de boutons [Mode mot de passe] :
+ -> Donner mot de passe
+ -> Changer mot de passe
+ -> Fermer fichier
+- Ligne de mot de passe 
+ -> Inclut une barre de texte inchangeable
+ -> Affiche le compteur et le mot de passe
+- Ligne de masquage
+ -> Toggle afficher caractères
+ -> Bouton copier mot de passe
+- Ligne de clé maître 
+ -> Inclut une barre de texte
+ -> Doit être remplie avec la bonne clé ou le reste ne marche pas
+ 
+
+En mode Ouvrir Fichier, la ligne de mot de passe et la ligne de masquage sont grisées
+
+Si la barre d'adresse est vide, le bouton Créer Fichier est grisé
+Si le texte de la barre d'adresse est invalide, le bouton Ouvrir Fichier est grisé
+
+Quand le bouton Créer Fichier est utilisé
+- Si l'adresse correspond à un fichier pré-existant, une pop-up de confirmation s'ouvre
+- La fenetre passe en mode Mot de Passe
+- Si une chaine est inclue dans la ligne de clé maître, elle est utilisée
+- Une pop-up de modification de mot de passe s'ouvre
+
+Quand le bouton Ouvrir Fichier est utilisé
+- La fenêtre tente de décrypter le mot de passe tel quel
+- Si elle n'y arrive pas, elle tente de décrypter le mot de passe avec la clé donnée
+- Si elle n'y arrive pas, elle ouvre une pop-up d'erreur
+- Sinon, la fenetre passe en mode Mot de Passe
+
+En mode Mot de Passe
+- La barre d'adresse reste fixe
+- Si le texte de la barre Clé Maitre est invalide
+ -> Le mot de passe est caché
+ -> La ligne de masquage et la ligne de boutons sont grisées
+
+Si le bouton Donner Mdp est appuyé
+- Si la CM est invalide, déclenche une fenêtre d'erreur et annule la suite
+- La barre Mot de Passe devient un compteur
+ -> Le compteur indique l'état actuel d'un timer interne
+ -> A la fin du timer, la barre MdP affiche le mdp chargé
+ -> Le temps du timer dépend des spécifications du fichier chargé
+- Le bouton Donner Mdp devient Annuler
+
+Si le bouton Changer Mdp est appuyé
+- Si la CM est invalide, déclenche une fenêtre d'erreur et annule la suite
+- Une pop-up de modification de mot de passe s'ouvre
+
+Si le bouton Fermer Fichier est appuyé
+- La fenetre ferme le fichier
+- La fenetre repasse en mode Ouvrir Fichier
+

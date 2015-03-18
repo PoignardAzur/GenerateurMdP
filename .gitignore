@@ -4,4 +4,4 @@
 *.layout
 *.pro.user
 **/build**
-v_*
+*.zip

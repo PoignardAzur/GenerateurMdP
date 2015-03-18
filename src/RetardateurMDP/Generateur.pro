@@ -15,20 +15,30 @@ CONFIG += c++11
 
 
 SOURCES += main.cpp\
-    editPasswordFile.cpp \
-    SQLite/statement.cpp \
-    SQLite/sqlite3.c \
-    SQLite/database.cpp \
-    retardeurMdp.cpp
+    SimpleCrypt/SimpleCrypt.cpp \
+    PasswordSerializer.cpp \
+    ChangePasswordDialog.cpp \
+    PasswordDelayer.cpp \
+    PasswordRuleWidget.cpp \
+    PasswordDelayer_Filebox.cpp \
+    PasswordDelayer_MainBox.cpp
 
 HEADERS  += \
-    SQLite/statement.hpp \
-    SQLite/sqlite3ext.h \
-    SQLite/sqlite3.h \
-    SQLite/database.hpp \
     predefinedValues.hpp \
     functions.hpp \
-    retardeurMdp.h \
-    editPasswordFile.hpp
+    SimpleCrypt/SimpleCrypt.hpp \
+    PasswordSerializer.hpp \
+    ChangePasswordDialog.hpp \
+    PasswordDelayer.hpp \
+    PasswordRuleWidget.hpp \
+    PasswordDelayer_Filebox.hpp \
+    PasswordDelayer_MainBox.hpp
 
-FORMS    += generateurmdp.ui
+FORMS    += \
+    ChangePasswordDialog.ui \
+    PasswordDelayer.ui \
+    PasswordRuleWidget.ui \
+    PasswordDelayer_Filebox.ui \
+    PasswordDelayer_MainBox.ui
+
+OTHER_FILES +=
