@@ -11,11 +11,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = GenerateurMdP
 TEMPLATE = app
 
+CONFIG += c++11
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    editPasswordFile.cpp
 
-HEADERS  += mainwindow.h
+SOURCES += main.cpp \
+    PasswordGenerator.cpp
 
-FORMS    += mainwindow.ui
+HEADERS  += \
+    PasswordGenerator.hpp
+
+FORMS    += \
+    PasswordGenerator.ui
