@@ -21,7 +21,8 @@ SOURCES += main_delayer.cpp \
     PasswordDelayer.cpp \
     PasswordRuleWidget.cpp \
     PasswordDelayer_Filebox.cpp \
-    PasswordDelayer_MainBox.cpp
+    PasswordDelayer_MainBox.cpp \
+    PasswordGenerator.cpp
 
 HEADERS  += \
     predefinedValues.hpp \
@@ -32,13 +33,15 @@ HEADERS  += \
     PasswordDelayer.hpp \
     PasswordRuleWidget.hpp \
     PasswordDelayer_Filebox.hpp \
-    PasswordDelayer_MainBox.hpp
+    PasswordDelayer_MainBox.hpp \
+    PasswordGenerator.hpp
 
 FORMS    += \
     ChangePasswordDialog.ui \
     PasswordDelayer.ui \
     PasswordRuleWidget.ui \
     PasswordDelayer_Filebox.ui \
-    PasswordDelayer_MainBox.ui
+    PasswordDelayer_MainBox.ui \
+    PasswordGenerator.ui
 
 OTHER_FILES +=

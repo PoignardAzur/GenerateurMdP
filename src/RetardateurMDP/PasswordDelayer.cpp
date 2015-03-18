@@ -15,12 +15,8 @@ m_mainBox(new PasswordDelayer_MainBox(this))
 {
     ui->setupUi(this);
 
-    ui->main_layout->addWidget(m_fileBox);
-    ui->main_layout->addWidget(m_mainBox);
-
-    // TO CHANGE
-    ui->main_layout->removeItem(ui->masterKey_layout);
-    ui->main_layout->addItem(ui->masterKey_layout);
+    ui->boxes_layout->addWidget(m_fileBox);
+    ui->boxes_layout->addWidget(m_mainBox);
 
     QWidget::setWindowTitle("Retardateur de mot de passe");
     connectSignals();

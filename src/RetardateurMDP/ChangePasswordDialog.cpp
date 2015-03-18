@@ -7,15 +7,20 @@
 
 
 ChangePasswordDialog::ChangePasswordDialog(QWidget* parent, QString* oldMasterkey, QString newMasterkey, bool createFile, PasswordSerializer* serializer) :
-QDialog(parent), ui(new Ui::ChangePasswordDialog), m_serializer(serializer), m_masterkey(oldMasterkey)
+    QDialog(parent),
+    ui(new Ui::ChangePasswordDialog),
+    m_generator(new PasswordGenerator(this)),
+    m_serializer(serializer),
+    m_masterkey(oldMasterkey)
 {
     ui->setupUi(this);
+    ui->password_layout->addWidget(m_generator);
+    QObject::connect(m_generator, &PasswordGenerator::passwordChanged, this, &ChangePasswordDialog::changePasswordString);
 
-    bool changeMasterkey = *oldMasterkey != newMasterkey;
+    ui->changeMasterkey_box->setChecked(*oldMasterkey != newMasterkey);
+    ui->masterkey_lineEdit->setText(newMasterkey);
 
-    ui->changeMasterkey_box->setChecked(changeMasterkey);
-
-    if ((changeMasterkey && *oldMasterkey == "") || createFile)
+    if (*oldMasterkey == "")
     {
         ui->changeMasterkey_box->setTitle("Ajouter clé maître");
     }
@@ -25,10 +30,7 @@ QDialog(parent), ui(new Ui::ChangePasswordDialog), m_serializer(serializer), m_m
         QDialog::setWindowTitle("Créer fichier mot de passe");
     }
 
-    ui->masterkey_lineEdit->setText(newMasterkey);
-
-    changePassword(false);  // no password is entered yet
-
+    changePassword(true);  // a password is automatically generated
     drawMasterkey(false);
 }
 
@@ -46,6 +48,12 @@ void ChangePasswordDialog::changePassword(bool validPassword)
 {
     ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(validPassword);
 }
+
+void ChangePasswordDialog::changePasswordString(const QString &str)
+{
+    changePassword(str != "");
+}
+
 
 void ChangePasswordDialog::addRule()
 {
@@ -74,7 +82,7 @@ void ChangePasswordDialog::okPressed()
     m_serializer->reset();
 
     deleteRuleWidgets(true);
-    m_serializer->setPasswordStr(ui->password_lineEdit->text());
+    m_serializer->setPasswordStr(m_generator->getPasswordStr());
 
     if (ui->changeMasterkey_box->isChecked())
     {
@@ -107,10 +115,5 @@ void ChangePasswordDialog::on_buttonBox_accepted()
 void ChangePasswordDialog::on_buttonBox_rejected()
 {
     reject();
-}
-
-void ChangePasswordDialog::on_password_lineEdit_textChanged(const QString &str)
-{
-    changePassword(str != "");
 }
 

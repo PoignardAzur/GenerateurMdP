@@ -4,7 +4,9 @@
 
 #include <QDialog>
 #include <QSpacerItem>
+
 #include "PasswordSerializer.hpp"
+#include "PasswordGenerator.hpp"
 
 
 namespace Ui
@@ -27,9 +29,12 @@ class ChangePasswordDialog : public QDialog
     void deleteRuleWidgets(bool getInfo);
 
 
-    private slots:
+    public slots :
 
-    void on_password_lineEdit_textChanged(const QString &str);
+    void changePasswordString(const QString &str);
+
+
+    private slots:
 
     void on_addRule_button_clicked();
     void on_deleteRules_button_clicked();
@@ -49,6 +54,7 @@ class ChangePasswordDialog : public QDialog
 
     Ui::ChangePasswordDialog *ui; // has-a
     QSpacerItem* m_spacer = nullptr;
+    PasswordGenerator* m_generator;
 
     PasswordSerializer* m_serializer; // use-a
     QString* m_masterkey;

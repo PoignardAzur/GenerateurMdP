@@ -55,6 +55,16 @@ void PasswordGenerator::resetPassword()
     ui->password_lineEdit->setText(generateStr(size));
 }
 
+QString PasswordGenerator::getPasswordStr() const
+{
+    return ui->password_lineEdit->text();
+}
+
+
+void PasswordGenerator::on_password_lineEdit_textChanged(const QString &str)
+{
+    passwordChanged(str);
+}
 
 void PasswordGenerator::on_generatePassword_button_pressed()
 {
