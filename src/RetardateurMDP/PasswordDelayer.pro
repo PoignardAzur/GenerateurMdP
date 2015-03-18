@@ -14,7 +14,7 @@ TEMPLATE = app
 CONFIG += c++11
 
 
-SOURCES += main.cpp\
+SOURCES += main_delayer.cpp \
     SimpleCrypt/SimpleCrypt.cpp \
     PasswordSerializer.cpp \
     ChangePasswordDialog.cpp \

@@ -14,8 +14,9 @@ TEMPLATE = app
 CONFIG += c++11
 
 
-SOURCES += main.cpp \
-    PasswordGenerator.cpp
+SOURCES += \
+    PasswordGenerator.cpp \
+    main_generator.cpp
 
 HEADERS  += \
     PasswordGenerator.hpp
